@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İki-Bir-Arada Büküm Makinesi: Teknoloji ve Operasyonel Bilgiler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F8FF; /* Alice Blue - Light Background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Example max-width, can be adjusted with Tailwind (e.g., max-w-2xl) */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 400px; /* Max height */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .chart-container {
+                height: 350px;
+            }
+        }
+        h1, h2, h3 {
+            color: #0077B6; /* Primary Blue */
+        }
+        .accent-text {
+            color: #FFC300; /* Warm Accent */
+        }
+        .primary-bg {
+            background-color: #0077B6;
+            color: white;
+        }
+        .secondary-bg {
+            background-color: #00B4D8;
+            color: white;
+        }
+        .light-bg {
+            background-color: #ADE8F4;
+            color: #073B4C;
+        }
+        .text-dark-neutral {
+            color: #333333;
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0077B6;
+        }
+        .kpi-label {
+            font-size: 0.875rem;
+            color: #555555;
+            margin-top: 0.25rem;
+        }
+        /* Flowchart styles */
+        .flow-step {
+            background-color: #E0F2FE; /* Light blue for steps */
+            border: 2px solid #00B4D8; /* Secondary blue border */
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #073B4C;
+        }
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #0077B6; /* Primary Blue */
+            margin: 0 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        /* Timeline styles */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 1.5rem;
+            border-left: 3px solid #00B4D8;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.60rem; /* Adjust to center on the line */
+            top: 0;
+            height: 1rem;
+            width: 1rem;
+            background-color: #FFC300; /* Warm Accent */
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .timeline-date {
+            font-weight: 600;
+            color: #0077B6;
+            margin-bottom: 0.25rem;
+        }
+        /* Explicitly confirm NO SVG and NO MERMAID JS */
+        /* Infographic Plan Summary:
+            1. Hero: Title & Intro
+            2. Machine Overview: Key Features, Design Purpose
+            3. Core Technology: Twisting Principle (HTML/CSS Flowchart)
+            4. Key Specs: Spindle/Yarn Table, General Machine Data (Big Numbers), Production Calc.
+            5. Operational Highlights: Key parameters (Styled Cards)
+            6. Maintenance Insights: Key intervals (HTML/CSS Timeline)
+            7. Safety First: Key warnings (Unicode Icons & Text)
+            8. Footer: Manufacturer Info
+            Color Palette: "Brilliant Blues & Warm Accent" (#0077B6, #00B4D8, #ADE8F4, #FFC300, #333333, #F0F8FF)
+        */
+        /* Visualization Choices (Confirming NO SVG, NO MERMAID):
+            - Twisting Principle: HTML/CSS Flowchart using divs and borders/Unicode arrows. (Goal: Organize/Inform)
+            - Spindle Types & Yarn Counts: HTML Table. (Goal: Compare/Inform)
+            - General Machine Data: Large Text/Big Numbers (HTML/CSS). (Goal: Inform)
+            - Operational Highlights: Styled Cards/List (HTML/CSS). (Goal: Inform)
+            - Maintenance Timeline: HTML/CSS structure with border lines and dots. (Goal: Organize/Inform)
+            - Safety Icons: Unicode characters (HTML/CSS). (Goal: Inform)
+            - Charts (if any, e.g., Market Share - not directly from this manual): Chart.js (Canvas). For this manual, primary focus is on HTML/CSS structured info.
+        */
+    </style>
+</head>
+<body class="text-dark-neutral">
+
+    <header class="primary-bg p-6 text-center sticky top-0 z-50 shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-white">İki-Bir-Arada Büküm Makinesi</h1>
+        <p class="text-lg text-gray-200 mt-2">Temel Teknoloji, Özellikler ve Operasyonel Bilgiler</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="card">
+            <h2 class="text-2xl font-semibold mb-4">Makineye Genel Bakış: Hassasiyet ve Verimlilik</h2>
+            <p class="mb-4">Suzhou Imagin Machinery Co., Ltd. İki-Bir-Arada Büküm Makinesi, yüksek kaliteli iplik işleme için titizlikle tasarlanmıştır. Bu kılavuz, optimum performans ve uzun ömür sağlamak için özelliklerini, çalışmasını ve bakımını kapsayan kapsamlı bir rehber sunar.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Temel Özellikler</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><span class="accent-text mr-2">✔</span> Kompakt Yapı: Alanın verimli kullanımı.</li>
+                        <li><span class="accent-text mr-2">✔</span> Kolay Kullanım: Kullanıcı dostu arayüz ve kontroller.</li>
+                        <li><span class="accent-text mr-2">✔</span> Kararlı Dönme Hızı: Tutarlı iplik kalitesi.</li>
+                        <li><span class="accent-text mr-2">✔</span> Yüksek Verimlilik ve Düşük Tüketim: Üretkenlik için optimize edilmiştir.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Çok Yönlülük İçin Tasarlandı</h3>
+                    <p>Bu büküm makinesi, aşağıdakiler de dahil olmak üzere geniş bir malzeme yelpazesini işlemeye uygundur:</p>
+                    <ul class="list-disc list-inside space-y-1 mt-2">
+                        <li>Pamuk İplikçiliği</li>
+                        <li>Yün İplikçiliği</li>
+                        <li>Karışımlı İplikler</li>
+                    </ul>
+                    <p class="mt-2">En yüksek operasyonel koşulları sürdürmek için kuru, kapalı ortamlarda kullanılmak üzere tasarlanmıştır.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="card">
+            <h2 class="text-2xl font-semibold mb-4">Çekirdek Teknoloji: "İki-Bir-Arada" Büküm</h2>
+            <p class="mb-6">Bu makinenin temel prensibi, "iki-bir-arada" büküm mekanizmasıdır. İş milinin her tek dönüşü için ipliğe iki büküm verilir. Bu, üretim verimliliğini önemli ölçüde artırır.</p>
+            <div class="text-center mb-2">
+                <p class="italic">Örnek: 13.000 dev/dak iş mili hızı, dakikada 26.000 dönüşlük etkili bir büküm hızı sağlar.</p>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-center">Basitleştirilmiş İplik Yolu ve Büküm Süreci:</h3>
+            <div class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-2">
+                <div class="flow-step">1. Besleme Bobini Çözülüyor (İş Mili Haznesinden)</div>
+                <div class="flow-arrow hidden md:block">➔</div>
+                <div class="flow-step">2. Gergi Cihazı ve İş Mili Çıkışı (İlk Büküm)</div>
+                <div class="flow-arrow hidden md:block">➔</div>
+                <div class="flow-step">3. İplik Balon Formasyonu (İş Mili Çıkışı ve Balon Kılavuzu Arasındaki İkinci Büküm)</div>
+                <div class="flow-arrow hidden md:block">➔</div>
+                <div class="flow-step">4. Saptırma ve Ön Sarım Merdanesi</div>
+                <div class="flow-arrow hidden md:block">➔</div>
+                <div class="flow-step">5. Sarım Bobini</div>
+            </div>
+             <p class="mt-6">İlk büküm, gergi cihazı ile iş mili çıkışı (iplik depolama diski) arasında gerçekleşir. İkinci büküm, iş mili çıkışı ile balon iplik kılavuzu arasında oluşan iplik balonuna yerleştirilir. Bu çift etkili hareket, makinenin yüksek çıktısının anahtarıdır.</p>
+        </section>
+
+        <section id="specifications" class="card">
+            <h2 class="text-2xl font-semibold mb-6">Temel Özellikler ve Yetenekler</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8 text-center">
+                <div class="card light-bg">
+                    <div class="kpi-value" id="twistRange">80-2800</div>
+                    <div class="kpi-label">Büküm Aralığı (T/m)</div>
+                </div>
+                <div class="card light-bg">
+                    <div class="kpi-value" id="maxSpindleSpeed">15.000</div>
+                    <div class="kpi-label">Maks. İş Mili Hızı (dev/dak)</div>
+                </div>
+                <div class="card light-bg">
+                    <div class="kpi-value" id="takeUpSpeed">~80</div>
+                    <div class="kpi-label">Sarım Hızı (m/dak, 10 bölümlü servo)</div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-3">İş Mili Tipleri ve İplik Numarası Aralıkları</h3>
+            <p class="mb-4">Makine, farklı iplik numarası aralıklarını karşılamak için çeşitli iş mili boyutları sunarak, çeşitli üretim ihtiyaçları için esneklik sağlar. Aşağıda örnekler verilmiştir (tam ayrıntılar için kılavuzun 10. sayfasına bakın):</p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="secondary-bg text-white">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">İş Mili Tipi</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">İplik Aralığı (Balon Sınırlayıcılı)</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">İplik Aralığı (Balon Sınırlayıcısız)</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">Besleme Bobini (6")</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">Maks. Sarım Çapı</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                        <tr>
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">SIM-07</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 4/2 - 100/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 8/2 - 100/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">180mm</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Φ280mm</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">SIM-08</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 8/2 - 170/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 16/2 - 170/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">155mm</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Φ280mm</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">SIM-09</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 12/2 - 200/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 12/2 - 200/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">135mm</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Φ280mm</td>
+                        </tr>
+                         <tr>
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">SIM-10</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 30/2 - 200/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 30/2 - 200/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">120mm</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Φ280mm</td>
+                        </tr>
+                         <tr>
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">SIM-11</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Pamuk, ipek iplik için</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Ne 40/2 - 200/2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">110mm</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Φ280mm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+             <p class="mt-6 text-sm text-gray-600">Not: 5°57'ye kadar konik sarım genellikle mümkündür.</p>
+
+            <h3 class="text-xl font-semibold mt-8 mb-3">Üretim Hesaplama Bilgileri</h3>
+            <p class="mb-2">Üretim, iş mili hızına ve metre başına büküme (TPM) bağlı olan iplik hızına göre hesaplanır. Formül şudur: <br> <code class="secondary-bg text-white px-2 py-1 rounded">İplik Hızı (m/dak) = (İş Mili Hızı (dev/dak) x 2) / TPM</code></p>
+            <p class="text-sm">Kılavuzdan bir örnek (Sayfa 9), Pamuk (Ne60s/2), 800T/M, 11000 dev/dak, 200 İş Mili ve %98 verimlilik için yaklaşık 152.78 Kg/Gün verim sağlar.</p>
+        </section>
+
+        <section id="operation" class="card">
+            <h2 class="text-2xl font-semibold mb-4">Operasyonel Öne Çıkanlar: Dokunmatik Ekran Kontrolü</h2>
+            <p class="mb-6">Makine, büküm süreci üzerinde hassas kontrol sağlayan çeşitli proses parametrelerini ayarlamak ve izlemek için sezgisel bir dokunmatik ekran arayüzüne (kılavuzda açıklanan Schneider veya Huichuan sistemleri) sahiptir.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="light-bg p-4 rounded-md shadow">
+                    <h4 class="font-semibold text-lg mb-1">İş Mili Hızı Ayarı</h4>
+                    <p class="text-sm">İplik ve kalite gereksinimlerine uyacak şekilde dokunmatik panel aracılığıyla ayarlanabilir.</p>
+                </div>
+                <div class="light-bg p-4 rounded-md shadow">
+                    <h4 class="font-semibold text-lg mb-1">Büküm Miktarı (TPM)</h4>
+                    <p class="text-sm">Proses ihtiyaçlarına göre (örn. 80-2800 T/m aralığı) dokunmatik ekran aracılığıyla hassas bir şekilde ayarlanır.</p>
+                </div>
+                <div class="light-bg p-4 rounded-md shadow">
+                    <h4 class="font-semibold text-lg mb-1">Büküm Yönü (S/Z)</h4>
+                    <p class="text-sm">S-büküm veya Z-büküm iplikleri üretmek için dokunmatik panelden kolayca seçilebilir.</p>
+                </div>
+                <div class="light-bg p-4 rounded-md shadow">
+                    <h4 class="font-semibold text-lg mb-1">Sarım Çapraz Açısı</h4>
+                    <p class="text-sm">Maksimum ileri geri hareket hızlarına uyarak optimum bobin oluşumu için ayarlanabilir.</p>
+                </div>
+                <div class="light-bg p-4 rounded-md shadow">
+                    <h4 class="font-semibold text-lg mb-1">Ön Sarım Hızı (%)</h4>
+                    <p class="text-sm">Standart olarak %60 olup, özel koşullar için dişliler değiştirilerek değiştirilebilir.</p>
+                </div>
+                <div class="light-bg p-4 rounded-md shadow">
+                    <h4 class="font-semibold text-lg mb-1">Bobin Şekillendirme</h4>
+                    <p class="text-sm">Bobin şekli (paralel/koni), iplik uzunluğu, strok ve desen önleme ayarları.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="maintenance" class="card">
+            <h2 class="text-2xl font-semibold mb-6">Bakım Bilgileri: Uzun Ömür Sağlama</h2>
+            <p class="mb-6">Sürekli yüksek performans ve erken aşınmayı önlemek için düzenli bakım çok önemlidir. Kılavuz, belirli temizlik, denetim ve yağlama programlarını özetlemektedir. Kluber NBU15 gresi, iş milleri gibi kritik bileşenler için belirtilmiştir.</p>
+            <h3 class="text-xl font-semibold mb-4">Temel Yağlama ve Kontrol Aralıkları:</h3>
+            <div class="space-y-4">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">İlk 100 Saat</div>
+                    <p>Sarım merdanesi sabitlemesini, senkron kayış gerginliğini ve iş mili kayışında hasar olup olmadığını kontrol edin.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Her 500 Saatte Bir</div>
+                    <p>Genel makine denetimi, tahrik ünitesini temizleyin, iş mili kayış gerginliğini kontrol edin (başlangıç süresi < 5s), iş mili senkronizasyonunu kontrol edin (fark < ±%0,5).</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Her 1.000 - 3.000 Saatte Bir</div>
+                    <p>Bobin klipsini yağlayın (gres, aralık iplik/ortama bağlıdır). Senkron kayışları/tekerlekleri, orta tahrik kayışını, iş mili tahrik kayışını, baskı merdanelerini kontrol edin. İş mili haznesini, balon sınırlayıcıyı, iplik kılavuzlarını temizleyin. Desen önleyici cihaz boşluğunu (0,5 mm), sensör boşluğunu (0,8-1,0 mm) kontrol edin.</p>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Her 6.000 Saatte Bir</div>
+                    <p>Büyük denetim. İş mili yataklarını yağlayın (ilk 3-3,5g, sonra 1,5g Kluber NBU15). Kayış baskı tekerleğini yağlayın (1,5g Kluber NBU15). İş mili fren fonksiyonunu, iş mili haznesi yataklarını kontrol edin. Hava basıncı regülatörü filtresini temizleyin.</p>
+                </div>
+            </div>
+            <p class="mt-6 text-sm italic">Not: Yüksek toz veya tüy bulunan ortamlarda bakım aralıkları kısaltılabilir.</p>
+        </section>
+
+        <section id="safety" class="card">
+            <h2 class="text-2xl font-semibold mb-4">Önce Güvenlik: Kritik Hatırlatmalar</h2>
+            <p class="mb-6">İki-Bir-Arada Büküm Makinesini çalıştırmak, yaralanmayı ve ekipman hasarını önlemek için kılavuzda belirtilen güvenlik protokollerine sıkı sıkıya uymayı gerektirir. Bakım sırasında makinenin düzgün bir şekilde topraklanmış olduğundan ve ana gücün kapalı ve kilitli olduğundan daima emin olun.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-center">
+                <div class="border border-red-300 p-4 rounded-lg bg-red-50">
+                    <div class="text-3xl mb-2">⚠️</div>
+                    <h4 class="font-semibold text-red-700">Genel Tehlike</h4>
+                    <p class="text-sm text-red-600">Tüm güvenlik sembollerine dikkat edin. Yanlış kullanım ciddi yaralanmalara veya ölüme yol açabilir.</p>
+                </div>
+                <div class="border border-yellow-400 p-4 rounded-lg bg-yellow-50">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <h4 class="font-semibold text-yellow-700">Elektrik Tehlikesi</h4>
+                    <p class="text-sm text-yellow-600">Yüksek voltajlı bileşenler. Ölüm riski. Gücü kapattıktan sonra kapakları açmadan önce 5 dakika bekleyin.</p>
+                </div>
+                <div class="border border-blue-300 p-4 rounded-lg bg-blue-50">
+                    <div class="text-3xl mb-2">🔄</div>
+                    <h4 class="font-semibold text-blue-700">Dönen Parçalar</h4>
+                    <p class="text-sm text-blue-600">İş milleri, kayışlardan kaynaklanan tehlike. Ellerinizi uzak tutun. Uygun kıyafetler giyin (bol giysi/saç yok).</p>
+                </div>
+                <div class="border border-orange-300 p-4 rounded-lg bg-orange-50">
+                    <div class="text-3xl mb-2">💥</div>
+                    <h4 class="font-semibold text-orange-700">Ezilme Tehlikesi</h4>
+                    <p class="text-sm text-orange-600">Makine bölümlerinin hareketli olduğu yerlerde dikkatli olun.</p>
+                </div>
+                <div class="border border-green-300 p-4 rounded-lg bg-green-50">
+                    <div class="text-3xl mb-2">✋</div>
+                    <h4 class="font-semibold text-green-700">El Güvenliği</h4>
+                    <p class="text-sm text-green-600">Ellerinizi hareketli parçalardan ve keskin kenarlardan koruyun.</p>
+                </div>
+                 <div class="border border-purple-300 p-4 rounded-lg bg-purple-50">
+                    <div class="text-3xl mb-2">🎧</div>
+                    <h4 class="font-semibold text-purple-700">İşitme Koruması</h4>
+                    <p class="text-sm text-purple-600">Gürültü 85dBA'yı aşarsa kulak koruyucu takın.</p>
+                </div>
+            </div>
+            <p class="mt-6 font-semibold">Daima orijinal yedek parçaları kullanın ve belirtilen bakım prosedürlerine uyun. İş milleri haznesi olmadan iş millerini çalıştırmayın, bu yataklara zarar verebilir ve ipliği kirletebilir.</p>
+        </section>
+
+    </main>
+
+    <footer class="secondary-bg p-6 text-center text-sm">
+        <p>&copy; Suzhou Imagin Machinery Co.,Ltd. Tüm bilgiler Kullanım Kılavuzu'na (2020.12.29) dayanmaktadır.</p>
+        <p>Adres: A Blok, No.7 Weiwen Yolu, Suzhou Endüstri Parkı, Suzhou, Çin | Tel: 0512-67066492</p>
+        <p>Bu infografik açıklayıcı amaçlıdır. Eksiksiz talimatlar için daima resmi kılavuza başvurun.</p>
+    </footer>
+
+    <script>
+        // Function to wrap labels for Chart.js
+        function wrapLabels(label, maxWidth) {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            }
+            if (currentLine.trim().length > 0) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
+
+        // Chart.js Tooltip Configuration (Required)
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            if (!item) return '';
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        // Example: If we were to add a chart, this is how it would be configured.
+        // No charts are strictly derived from the manual's direct data that fit well here,
+        // but the structure is ready if data for comparison (e.g., market share, trend) was available.
+
+        /*
+        const exampleCtx = document.getElementById('exampleChart');
+        if (exampleCtx) {
+            const exampleData = {
+                labels: [
+                    wrapLabels('Category A with a very long name', 16), 
+                    wrapLabels('Category B is shorter', 16), 
+                    wrapLabels('Category C another example', 16)
+                ],
+                datasets: [{
+                    label: 'Sample Data',
+                    data: [10, 20, 15],
+                    backgroundColor: ['#0077B6', '#00B4D8', '#ADE8F4'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 1
+                }]
+            };
+
+            new Chart(exampleCtx, {
+                type: 'bar', // or 'pie', 'line', etc.
+                data: exampleData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        },
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Example Chart Title'
+                        }
+                    }
+                }
+            });
+        }
+        */
+
+    </script>
+
+</body>
+</html>
